@@ -1,2 +1,5 @@
 *.o
 *.out
+mlx*
+.vscode
+.DS_Store
