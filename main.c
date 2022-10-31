@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 17:57:33 by znichola          #+#    #+#             */
-/*   Updated: 2022/10/28 00:22:42 by znichola         ###   ########.fr       */
+/*   Updated: 2022/10/30 12:54:12 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,72 +15,27 @@
 
 // formula used to calculate the 
 
-// int offset = (y * line_length + x * (bits_per_pixel / 8));
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-	if (x < 0 || y < 0 || x > WIDTH || y > HIGHT)
-		return ;
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
-
-void put_square(t_data *data, int w, int h, int x, int y)
-{
-	for (int i = x; i < x+w; i++)
-	{
-		for (int e = y; e < y+h; e++)
-			my_mlx_pixel_put(data, i, e, 0x00FF0000);
-	}
-}
-
-int	DrawCircle(t_data *data, int r, int x, int y)
-{
-	static const double PI = 3.1415926535;
-	double i, angle, x1, y1;
- 
-	for(i = 0; i < 360; i += 0.1)
-	{
-		angle = i;
-		x1 = r * cos(angle * PI / 180);
-		y1 = r * sin(angle * PI / 180);
-		my_mlx_pixel_put(data, x1 + x, y1 + y, 0x00FF0000);
-	}
-	return (1);
-}
-
 int	main(void)
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
-
-	t_complex	z;
-	z.a = 0.0;
-	z.b = 0.0;
-
-	t_complex	c;
-	c.a = 0.0;
-	c.b = 0.0;
-
-	double	a_min = -2.2;
-	double	a_max = .8;
-	double	b_min = fabs(a_min - a_max) * ((double)HIGHT / (double)WIDTH) / -2;
-	double	b_max = fabs(a_min - a_max) * ((double)HIGHT / (double)WIDTH) / 2;
-
-	// print_complex("power", set(z, c, 5));
-	// printf ("found depth {%d}\n", fractal_set(z, c, 10));
+	t_app app;
 	
-	// printf("%f\n", map(WIDTH/2+10, WIDTH, -2, 2));
-
-	// return (0);
+	// t_data	img;
+	// t_vars	vars;
 
 	
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, WIDTH, HIGHT, "Hello world!");
-	img.img = mlx_new_image(mlx, WIDTH, HIGHT);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-								&img.endian);
+	// t_complex	z;
+	// z.a = 0.0;
+	// z.b = 0.0;
+
+	// t_complex	c;
+	// c.a = 0.0;
+	// c.b = 0.0;
+
+	// vars.mlx = mlx_init();
+	// vars.win = mlx_new_window(vars.mlx, WIDTH, HIGHT, "Hello world!");
+	// img.img = mlx_new_image(vars.mlx, WIDTH, HIGHT);
+	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+	// 							&img.endian);
 	
 	// mandelbrot set
 	//	f(z) = z^2 + C
@@ -99,27 +54,22 @@ int	main(void)
 	// #FFFAF3
 	// #FFFDF0
 	// 0xFFFFFFFFFFFFFF06
-	int	colour = 0XE2DED0;
-	for (int h = 0; h < HIGHT; h++)
-	{
-		for (int w = 0; w < WIDTH; w++)
-		{
-			c.a = map(w, WIDTH, a_min, a_max);
-			if (w == 0)
-				c.b = map(h, HIGHT, b_min, b_max);
-			int d = fractal_set(z, c, DEPTH);
-			// printf("% 3d ", d);
-			if (d == -1)
-				colour = 0X4E4F50;
-			else 
-				colour = 0XE2DED0;
-			my_mlx_pixel_put(&img, w, h, colour);
-		}
-		// printf("\n ----");
-	}
+	
+	/* the complex number filed fitted to the screenspace */
+	// t_cmpx_fld cf;
+	// calc_complex_field(&cf, 500, 500, 1);
+	
+	// generate_madelbrot(&cf,&img);
+	
+	// mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
 
-	// my_mlx_pixel_put(&img, 50, 50, 0X4E4F50);
+	int foo = 0;
+	init_app(&app);
+	mlx_mouse_hook(app.vars.win, mouse_hook, &foo);//, p);
+	mlx_loop_hook(app.vars.mlx, render_next_frame, &app);
 
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);
+	mlx_key_hook(app.vars.win, e_close, &app.vars);
+	mlx_hook(app.vars.win, 17, 0, destroy, &app.vars);
+	
+	mlx_loop(app.vars.mlx);
 }

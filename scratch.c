@@ -61,3 +61,27 @@
 		// printf("depth post %d\n", depth);
 		// return (depth);
 	}
+
+void put_square(t_data *data, int w, int h, int x, int y)
+{
+	for (int i = x; i < x+w; i++)
+	{
+		for (int e = y; e < y+h; e++)
+			my_mlx_pixel_put(data, i, e, 0x00FF0000);
+	}
+}
+
+int	DrawCircle(t_data *data, int r, int x, int y)
+{
+	static const double PI = 3.1415926535;
+	double i, angle, x1, y1;
+ 
+	for(i = 0; i < 360; i += 0.1)
+	{
+		angle = i;
+		x1 = r * cos(angle * PI / 180);
+		y1 = r * sin(angle * PI / 180);
+		my_mlx_pixel_put(data, x1 + x, y1 + y, 0x00FF0000);
+	}
+	return (1);
+}
