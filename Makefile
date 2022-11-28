@@ -6,11 +6,12 @@
 #    By: znichola <znichola@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 18:49:24 by znichola          #+#    #+#              #
-#    Updated: 2022/10/28 11:04:14 by znichola         ###   ########.fr        #
+#    Updated: 2022/11/28 21:41:43 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC 	= main.c complex.c map.c display.c events.c fractal.c
+SNAME 	= main complex map display events fractal colours colours_2
+SRC		= $(addsuffix .c, $(SNAME))
 OBJ 	= $(SRC:%.c=%.o)
 
 # CFLAGS	= -I$(INC) -O3 -I.. -g
