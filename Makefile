@@ -6,11 +6,11 @@
 #    By: znichola <znichola@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 18:49:24 by znichola          #+#    #+#              #
-#    Updated: 2022/11/28 21:41:43 by znichola         ###   ########.fr        #
+#    Updated: 2022/11/29 09:31:17 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SNAME 	= main complex map display events fractal colours colours_2
+SNAME 	= main complex map display events fractal colours colours_2 converter
 SRC		= $(addsuffix .c, $(SNAME))
 OBJ 	= $(SRC:%.c=%.o)
 

@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 19:45:12 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/28 23:17:32 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/29 09:30:39 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_fpoint	rscreen_to_world(t_app *a, t_ipoint s)
 	
 	w.x = (float)(((float)s.x / a->scale.x) + a->offset.x);
 	w.y = (float)(((float)s.y / a->scale.y) + a->offset.y);
-	printf("offset: "); pf(a->offset); printf(" scale: "); pf(a->scale); printf("\n");
-	printf("screen to world: "); pi(s); printf(" -> "); pf(w); printf("\n");
+	// printf("offset: "); pf(a->offset); printf(" scale: "); pf(a->scale); printf("\n");
+	// printf("screen to world: "); pi(s); printf(" -> "); pf(w); printf("\n");
 	return (w);
 }

@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 08:30:37 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/28 23:47:04 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/29 21:23:22 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int	destroy(t_vars *vars)
 {
+	// printf("lsdjkf %p\n", vars);
 	mlx_destroy_window(vars->mlx, vars->win);
+	// printf("lsdjkf %p\n", vars);
 	exit(0);
 	return (0);
 }
@@ -27,19 +29,22 @@ void	zoom(t_app *a, int dir)
 	mouse_world_before_zoom = rscreen_to_world(a, a->mouse);
 	if (dir > 0)
 	{
-		a->scale.x *= 1.1;
-		a->scale.y *= 1.1;
+		a->scale.x *= 1.2;
+		a->scale.y *= 1.2;
 	}
 	else if (dir < 0)
 	{
-		a->scale.x *= 0.9;
-		a->scale.y *= 0.9;
+		a->scale.x *= 0.8;
+		a->scale.y *= 0.8;
 	}
 	else
 		return ;
 	mouse_world_after_zoom = rscreen_to_world(a, a->mouse);
 	a->offset.x += (mouse_world_before_zoom.x - mouse_world_after_zoom.x);
 	a->offset.y += (mouse_world_before_zoom.y - mouse_world_after_zoom.y);
+	printf("scale: "); pf(a->scale); printf("\n");
+	printf("offset: "); pf(a->offset); printf("\n");
+	a->cf.depth = 1;
 }
 
 int	key_press(int keycode, t_app *a)
@@ -48,13 +53,16 @@ int	key_press(int keycode, t_app *a)
 	if (keycode == KEY_ESC)
 		destroy(&a->vars);
 	else if (keycode == KEY_UP || keycode == KEY_W)
-		a->offset.y += 10;
+	{
+		a->offset.y += 4/a->scale.y;
+		printf("offset: "); pf(a->offset); printf("\n");
+	}
 	else if (keycode == KEY_DOWN || keycode == KEY_S)
-		a->offset.y -= 10;
+		a->offset.y -= 4/a->scale.y;
 	else if (keycode == KEY_RIGHT || keycode == KEY_D)
-		a->offset.x -= 10;
+		a->offset.x -= 4/a->scale.x;
 	else if (keycode == KEY_LEFT || keycode == KEY_A)
-		a->offset.x += 10;
+		a->offset.x += 4/a->scale.x;
 	else if (keycode == KEY_PLUS)
 		zoom(a, 1);
 	else if (keycode == KEY_MINUS)
@@ -94,7 +102,7 @@ int	mouse_hook(int action, int x, int y, t_app *a)
 
 int	mouse_action(int action, int x, int y, t_app *a)
 {
-		printf("\nmousecode:[%d] (%d, %d)\n", action, x, y);
+		printf("\nmousecode:[%d] (%d, %d) app%p\n", action, x, y, a);
 		a->mouse_down.x = x;
 		a->mouse_down.y = y;
 		return (1);

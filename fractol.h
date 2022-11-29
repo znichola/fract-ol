@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 18:30:39 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/28 23:40:04 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/29 20:23:11 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,12 @@ int			mouse_action(int action, int x, int y, t_app *a);
 /* fractal */
 void		calc_complex_field(t_cmpx_fld *cf, int w_ctr, int h_ctr);
 void		print_cmpx_field(char *msg, t_cmpx_fld *cf);
-int			generate_madelbrot(t_cmpx_fld *cf, t_data *img);
+int			generate_madelbrot(t_app *p);
+
+/* converter */
+t_complex	ftc(t_fpoint f);
+t_fpoint	ctf(t_complex c);
+t_fpoint	fpoint(double x, double y);
+t_ipoint	ipoint(int x, int y);
 
 #endif /* fractol.h */

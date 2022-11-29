@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 08:25:27 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/28 22:51:08 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/29 21:45:00 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	init_app(t_app *p)
 	p->cf.depth = 1;
 	p->cf.scale = 1;
 	p->vars.mlx = mlx_init();
+	printf("mlx:%p\n", p->vars.mlx);
 	p->img.width = WIDTH;
 	p->img.hight = HIGHT;
 	p->vars.win = mlx_new_window(p->vars.mlx, p->img.width, p->img.hight, "Hello Fractal!");
@@ -52,6 +53,12 @@ void	init_app(t_app *p)
 									&p->img.bits_per_pixel,
 									&p->img.line_length,
 									&p->img.endian);
+	p->scale.x = p->img.width * 0.2;
+	p->scale.y = p->img.hight * 0.2;
+	p->offset = fpoint(0, 0);
+	p->offset = rscreen_to_world(p, ipoint(-p->img.width/2, -p->img.hight/2));
+	printf("screen center: "); pi(ipoint(p->img.width/2, p->img.hight/2)); printf("\n");
+	printf("world corrds: "); pf(rscreen_to_world(p, ipoint(-p->img.width/2, -p->img.hight/2))); printf("\n");
 }
 
 // void	
@@ -67,10 +74,11 @@ int	render_next_frame(t_app *p)
 	// mlx_mouse_get_pos(p->vars.win, &x, &y);
 	// printf("{%d, %d}\n", x, y);
 
-	calc_complex_field(&p->cf, 500, 500);
+	// calc_complex_field(&p->cf, 500, 500);
 	
-	generate_madelbrot(&p->cf, &p->img);
-	
+	// printf("scale: "); pf(p->scale); printf("\n");
+	// printf("offset: "); pf(p->offset); printf("\n");
+	generate_madelbrot(p);
 	mlx_put_image_to_window(p->vars.mlx, p->vars.win, p->img.img, 0, 0);
 	return (0);
 }
