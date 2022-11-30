@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 08:30:37 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/29 21:23:22 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/30 14:50:20 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,13 @@ int	key_press(int keycode, t_app *a)
 		zoom(a, 1);
 	else if (keycode == KEY_MINUS)
 		zoom(a, -1);
+	else if (keycode == KEY_SPACE)
+	{
+		if (a->render == 1)
+			a->render = 0;
+		else
+			a->render = 1;
+	}
 	return (1);
 }
 
@@ -100,10 +107,11 @@ int	mouse_hook(int action, int x, int y, t_app *a)
 	return (0);
 }
 
-int	mouse_action(int action, int x, int y, t_app *a)
+int	mouse_action(int x, int y, t_app *a)
 {
-		printf("\nmousecode:[%d] (%d, %d) app%p\n", action, x, y, a);
+		printf("\nmousecode: (%d, %d)\n", x, y);
 		a->mouse_down.x = x;
 		a->mouse_down.y = y;
+		printf("mouse_down"); pi(a->mouse_down); printf("\n");
 		return (1);
 }

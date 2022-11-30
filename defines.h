@@ -6,16 +6,17 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:19:36 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/28 21:36:30 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/30 15:29:12 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINES_H
 # define DEFINES_H
 
-# define WIDTH 1000
-# define HIGHT 1000
+# define WIDTH 500
+# define HIGHT 500
 # define DEPTH 60
+# define MAXPOINTS 50
 
 # define GREY 0XE2DED0
 # define IVORY 0X4E4F50
@@ -59,6 +60,7 @@ enum e_key {
 	KEY_RIGHT = 124,
 	KEY_PLUS = 69,
 	KEY_MINUS = 78,
+	KEY_SPACE = 49,
 };
 
 #endif /* defines */

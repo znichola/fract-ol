@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 08:25:27 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/29 21:45:00 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/30 15:28:28 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,32 +53,46 @@ void	init_app(t_app *p)
 									&p->img.bits_per_pixel,
 									&p->img.line_length,
 									&p->img.endian);
-	p->scale.x = p->img.width * 0.2;
-	p->scale.y = p->img.hight * 0.2;
+	// p->scale = fpoint(1, 1);
+	// p->scale.x = p->img.width * 0.2;
+	// p->scale.y = p->img.hight * 0.2;
+	p->scale = fpoint(p->img.width * 0.2, p->img.hight * 0.2);
 	p->offset = fpoint(0, 0);
 	p->offset = rscreen_to_world(p, ipoint(-p->img.width/2, -p->img.hight/2));
-	printf("screen center: "); pi(ipoint(p->img.width/2, p->img.hight/2)); printf("\n");
-	printf("world corrds: "); pf(rscreen_to_world(p, ipoint(-p->img.width/2, -p->img.hight/2))); printf("\n");
+	// printf("screen center: "); pi(ipoint(p->img.width/2, p->img.hight/2)); printf("\n");
+	// printf("world corrds: "); pf(rscreen_to_world(p, ipoint(-p->img.width/2, -p->img.hight/2))); printf("\n");
 }
 
-// void	
+int	calc_display_itterations(t_app *p)
+{
+	t_complex z;
+	t_complex c;
+	int	i;
+
+	i = 1;
+	p->points[0] = rworld_to_screen(p, fpoint(0.0, 0.0));
+	while (i < MAXPOINTS && i < p->cf.depth)
+	{
+		z = ftc(rscreen_to_world(p, p->points[i - 1]));
+		c = ftc(rscreen_to_world(p, p->mouse_down));
+		p->points[i] = rworld_to_screen(p, ctf(c_addition(c_power2(z), c)));
+		put_circle(&p->img, 1, p->points[i], colour_lerp(1, MAXPOINTS, i));
+		i++;
+	}
+	return (1);
+}
 
 int	render_next_frame(t_app *p)
 {
-	p->cf.depth +=1;
-	
-	// int x = 0;
-	// int y = 0;
-
-
-	// mlx_mouse_get_pos(p->vars.win, &x, &y);
-	// printf("{%d, %d}\n", x, y);
-
-	// calc_complex_field(&p->cf, 500, 500);
-	
-	// printf("scale: "); pf(p->scale); printf("\n");
-	// printf("offset: "); pf(p->offset); printf("\n");
-	generate_madelbrot(p);
+	if (p->render)
+	{
+		p->cf.depth +=1;
+		generate_madelbrot(p);
+	}
+	put_circle(&p->img, 1, p->mouse_down, BACKGROUND);
+	calc_display_itterations(p);
+	printf("mouse_down put circle"); pi(p->mouse_down); printf("\n");
 	mlx_put_image_to_window(p->vars.mlx, p->vars.win, p->img.img, 0, 0);
 	return (0);
 }
+

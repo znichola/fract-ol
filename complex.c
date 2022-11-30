@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 09:46:01 by znichola          #+#    #+#             */
-/*   Updated: 2022/10/27 21:36:33 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/30 13:22:03 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int	fractal_set(t_complex z, t_complex c, int depth)
 	ans = c_addition(c_power2(z), c);
 	len = c_length(ans);
 	ret = -1;
+	
 	if (len > 2)
 	{
 		// printf("ret depth len%f	%d ", len, DEPTH - depth);

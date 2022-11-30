@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 17:57:33 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/29 20:14:13 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/30 14:38:07 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(void)
 	
 	mlx_key_hook(app.vars.win, key_press, &app);
 	mlx_mouse_hook(app.vars.win, mouse_hook, &app);
-	// mlx_hook(app.vars.win, ON_MOUSEDOWN, 0, mouse_action, &app.vars);
+	mlx_hook(app.vars.win, ON_MOUSEMOVE, 0, mouse_action, &app);
 
 	mlx_hook(app.vars.win, ON_DESTROY, 0, destroy, &app.vars);
 

@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 18:30:39 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/29 20:23:11 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/30 14:49:26 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,11 @@ typedef struct	s_app
 	t_vars		vars;
 	t_cmpx_fld	cf;
 	t_ipoint	mouse;
-	t_fpoint	mouse_down;
+	t_ipoint	mouse_down;
 	t_fpoint	offset;
 	t_fpoint	scale;
+	t_ipoint	points[MAXPOINTS];
+	int			render;
 }				t_app;
 
 /* comlplex.c */
@@ -137,6 +139,7 @@ void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int			render_next_frame(t_app *p);
 void		init_app(t_app *p);
 
+int	put_circle(t_data *d, int r, t_ipoint center, int colour);
 int			colour_shades(int colour, int depth, t_cmpx_fld *cf);
 int			colour_list(int colour, int depth, t_cmpx_fld *cf);
 
@@ -144,7 +147,7 @@ int			colour_list(int colour, int depth, t_cmpx_fld *cf);
 int			destroy(t_vars *vars);
 int			key_press(int keycode, t_app *a);
 int			mouse_hook(int action, int x, int y, t_app *a);
-int			mouse_action(int action, int x, int y, t_app *a);
+int			mouse_action(int x, int y, t_app *a);
 
 /* fractal */
 void		calc_complex_field(t_cmpx_fld *cf, int w_ctr, int h_ctr);
