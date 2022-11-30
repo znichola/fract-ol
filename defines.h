@@ -6,15 +6,15 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:19:36 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/30 15:29:12 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/30 23:29:35 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINES_H
 # define DEFINES_H
 
-# define WIDTH 500
-# define HIGHT 500
+# define WIDTH 1000
+# define HIGHT 1000
 # define DEPTH 60
 # define MAXPOINTS 50
 

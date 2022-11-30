@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 08:30:37 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/30 22:43:18 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/30 23:04:59 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	key_press(int keycode, t_app *a)
 	else if (keycode == KEY_MINUS)
 		zoom(a, -1);
 	else if (keycode == KEY_SPACE)
-		toggle(a->render);
+		a->render = (a->render);
 	else
 		key_board_nums(a, keycode);
 	return (1);
