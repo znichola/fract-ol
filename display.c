@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 08:25:27 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 00:18:17 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 00:19:03 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,8 @@ void	put_circle_fast(t_data *d, int r, t_ipoint center, int colour)
 	}
 }
 
-	// for(int y=-radius; y<=radius; y++)
-	// 	for(int x=-radius; x<=radius; x++)
-	// 		if(x*x+y*y <= radius*radius)
-	// 			my_mlx_pixel_put(d, q.x + center.x, q.y + center.y, colour);
-	// 			setpixel(origin.x+x, origin.y+y);
-
 void	init_app(t_app *p)
 {
-	// calc_complex_field(&p->cf, 500, 500);
-	p->cf.depth = 1;
-	p->cf.scale = 1;
 	p->vars.mlx = mlx_init();
 	p->img.width = WIDTH;
 	p->img.hight = HIGHT;
@@ -78,7 +69,6 @@ void	init_app(t_app *p)
 									&p->img.bits_per_pixel,
 									&p->img.line_length,
 									&p->img.endian);
-	// p->scale = fpoint(1, 1);
 	p->scale = fpoint(p->img.width * 0.2, p->img.hight * 0.2);
 	p->offset = fpoint(0, 0);
 	p->offset = rscreen_to_world(p, ipoint(-p->img.width/2, -p->img.hight/2));
@@ -114,7 +104,6 @@ int	render_next_frame(t_app *p)
 		p->cf.depth +=1;
 		generate_madelbrot(p);
 	}
-	// put_circle(&p->img, 1, p->mouse_down, BACKGROUND);
 	calc_display_itterations(p);
 	// printf("mouse_down put circle"); pi(p->mouse_down); printf("\n");
 	mlx_put_image_to_window(p->vars.mlx, p->vars.win, p->img.img, 0, 0);

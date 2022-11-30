@@ -6,7 +6,7 @@
 #    By: znichola <znichola@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 18:49:24 by znichola          #+#    #+#              #
-#    Updated: 2022/11/30 22:01:54 by znichola         ###   ########.fr        #
+#    Updated: 2022/12/01 00:22:55 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,6 @@ SNAME 	=	main complex map display events fractal \
 			converter
 SRC		= $(addsuffix .c, $(SNAME))
 OBJ 	= $(SRC:%.c=%.o)
-
-# CFLAGS	= -I$(INC) -O3 -I.. -g
 
 NAME	= fractol
 
@@ -29,10 +27,16 @@ all : $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
+bonus : all
 
-clean:
-	rm -f $(NAME) $(OBJ)
+clean :
+	$(RM) $(NAME) $(OBJ)
+
+fclean : clean
+	$(RM) fractol
 
 re: clean all
+
+.PHONY: all bonus clean re
 
 

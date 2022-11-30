@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 08:30:37 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/30 23:36:56 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 00:28:49 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,13 @@ int	key_press(int keycode, t_app *a)
 	if (keycode == KEY_ESC)
 		destroy(&a->vars);
 	else if (keycode == KEY_UP || keycode == KEY_W)
-		a->offset.y += 4/a->scale.y;
+		a->offset.y += 10/a->scale.y;
 	else if (keycode == KEY_DOWN || keycode == KEY_S)
-		a->offset.y -= 4/a->scale.y;
+		a->offset.y -= 10/a->scale.y;
 	else if (keycode == KEY_RIGHT || keycode == KEY_D)
-		a->offset.x -= 4/a->scale.x;
+		a->offset.x -= 2/a->scale.x;
 	else if (keycode == KEY_LEFT || keycode == KEY_A)
-		a->offset.x += 4/a->scale.x;
+		a->offset.x += 2/a->scale.x;
 	else if (keycode == KEY_PLUS)
 		zoom(a, 1);
 	else if (keycode == KEY_MINUS)
@@ -92,14 +92,13 @@ int	key_press(int keycode, t_app *a)
 		a->render = toggle(a->render);
 	else
 		key_board_nums(a, keycode);
-	return (1);
+	return (0);
 }
 
 int	mouse_hook(int action, int x, int y, t_app *a)
 {
 	a->mouse.x = x;
 	a->mouse.y = y;
-	// (void)a;
 	if (action == MOUSE_LEFT)
 	{
 		printf("left click\n");
@@ -129,5 +128,5 @@ int	mouse_move(int x, int y, t_app *a)
 {
 		a->mouse_down.x = x;
 		a->mouse_down.y = y;
-		return (1);
+		return (0);
 }
