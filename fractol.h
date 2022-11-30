@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 18:30:39 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/30 22:41:04 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 00:13:37 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ void		init_app(t_app *p);
 t_pallet	get_pallet(t_app *a, int i);
 
 int			put_circle(t_data *d, int r, t_ipoint center, int colour);
+void	put_circle_fast(t_data *d, int r, t_ipoint center, int colour);
 int			colour_shades(int colour, int depth, t_cmpx_fld *cf);
 int			colour_list(int colour, int depth, t_cmpx_fld *cf);
 

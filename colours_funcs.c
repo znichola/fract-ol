@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 08:19:33 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/30 22:57:14 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 00:17:28 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	colour_lerp(int min, int max, int point)
 	int	str_col;
 	int	end_col;
 
-	str_col = 0x393E46;
-	end_col = 0xD61C4E;
+	str_col = 0x00ff1b6b;
+	end_col = 0x0045caff;
 	
 	double	prct;
 	prct = (double)(point - min) / (max - min);

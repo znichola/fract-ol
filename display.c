@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 08:25:27 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/30 23:28:56 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 00:18:17 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,32 @@ int	put_circle(t_data *d, int r, t_ipoint center, int colour)
 	}
 	return (1);
 }
+
+// fast aproximative algo from stackoverflow
+void	put_circle_fast(t_data *d, int r, t_ipoint center, int colour)
+{
+	int	y;
+	int	x;
+
+	y = -r;
+	while(y <= r)
+	{
+		x = -r;
+		while (x <= r)
+		{
+			if (x * x + y * y <= r * r)
+				my_mlx_pixel_put(d, center.x + x, center.y + y, colour);
+			x++;
+		}
+		y++;
+	}
+}
+
+	// for(int y=-radius; y<=radius; y++)
+	// 	for(int x=-radius; x<=radius; x++)
+	// 		if(x*x+y*y <= radius*radius)
+	// 			my_mlx_pixel_put(d, q.x + center.x, q.y + center.y, colour);
+	// 			setpixel(origin.x+x, origin.y+y);
 
 void	init_app(t_app *p)
 {
@@ -75,10 +101,10 @@ int	calc_display_itterations(t_app *p)
 		z = ftc(rscreen_to_world(p, p->points[i - 1]));
 		c = ftc(rscreen_to_world(p, p->mouse_down));
 		p->points[i] = rworld_to_screen(p, ctf(c_addition(c_power2(z), c)));
-		put_circle(&p->img, 1, p->points[i], colour_lerp(1, MAXPOINTS, i));
+		put_circle_fast(&p->img, 2, p->points[i], colour_lerp(1, MAXPOINTS, i));
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
 int	render_next_frame(t_app *p)
@@ -88,7 +114,7 @@ int	render_next_frame(t_app *p)
 		p->cf.depth +=1;
 		generate_madelbrot(p);
 	}
-	put_circle(&p->img, 1, p->mouse_down, BACKGROUND);
+	// put_circle(&p->img, 1, p->mouse_down, BACKGROUND);
 	calc_display_itterations(p);
 	// printf("mouse_down put circle"); pi(p->mouse_down); printf("\n");
 	mlx_put_image_to_window(p->vars.mlx, p->vars.win, p->img.img, 0, 0);
