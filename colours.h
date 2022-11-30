@@ -6,14 +6,14 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 10:39:15 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/28 21:43:16 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/30 22:29:05 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLOURS_H
 # define COLOURS_H
 
-//                  0x00FF0000
+# include "fractol.h"
 
 # define BACKGROUND	0x00292831
 # define DEEP_BLUE	0x00333f58
@@ -46,15 +46,41 @@
 
 // https://lospec.com/palette-list/funkyfuture-8
 
-// colours
-int	create_trgb(int t, int r, int g, int b);
-int	get_t(int trgb);
-int	get_r(int trgb);
-int	get_g(int trgb);
-int	get_b(int trgb);
+// typedef struct	s_pallet
+// {
+// 	int	len;
+// 	int	c[16];
+// }				t_pallet;
 
-// colours_2
-int			colour_lerp(int min, int max, int point);
-int			colour_ramp(int min, int max, int point);
+// typedef struct	s_pallets
+// {
+// 	t_pallet	p[10];
+// }				t_pallets;
+
+// colours
+// int			create_trgb(int t, int r, int g, int b);
+// int			get_t(int trgb);
+// int			get_r(int trgb);
+// int			get_g(int trgb);
+// int			get_b(int trgb);
+
+// // colours funcs
+// int			colour_lerp(int min, int max, int point);
+// // int			colour_ramp(int min, int max, int point, t_pallet p);
+// // void		init_pallets(t_pallets *p);
+
+// // colours init 1
+// t_pallet	clpt_greyscale(void);
+// t_pallet	clpt_pollen(void);
+// t_pallet	clpt_full_rainbow(void);
+// t_pallet	clpt_twilight(void);
+// t_pallet	clpt_blue_to_pink(void);
+
+// // colours init 2
+// t_pallet	clpt_green_to_red(void);
+// t_pallet	clpt_pastel_shades(void);
+// t_pallet	clpt_retroearth(void);
+// t_pallet	clpt_fading(void);
+// t_pallet	clpt_cyberneon(void);
 
 #endif /* colours */

@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 08:25:27 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/30 15:28:28 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/30 22:44:28 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,10 @@ int	put_circle(t_data *d, int r, t_ipoint center, int colour)
 
 void	init_app(t_app *p)
 {
-	calc_complex_field(&p->cf, 500, 500);
+	// calc_complex_field(&p->cf, 500, 500);
 	p->cf.depth = 1;
 	p->cf.scale = 1;
 	p->vars.mlx = mlx_init();
-	printf("mlx:%p\n", p->vars.mlx);
 	p->img.width = WIDTH;
 	p->img.hight = HIGHT;
 	p->vars.win = mlx_new_window(p->vars.mlx, p->img.width, p->img.hight, "Hello Fractal!");
@@ -54,11 +53,11 @@ void	init_app(t_app *p)
 									&p->img.line_length,
 									&p->img.endian);
 	// p->scale = fpoint(1, 1);
-	// p->scale.x = p->img.width * 0.2;
-	// p->scale.y = p->img.hight * 0.2;
 	p->scale = fpoint(p->img.width * 0.2, p->img.hight * 0.2);
 	p->offset = fpoint(0, 0);
 	p->offset = rscreen_to_world(p, ipoint(-p->img.width/2, -p->img.hight/2));
+	init_pallets(&p->pallets);
+	p->pallet_index = 0;
 	// printf("screen center: "); pi(ipoint(p->img.width/2, p->img.hight/2)); printf("\n");
 	// printf("world corrds: "); pf(rscreen_to_world(p, ipoint(-p->img.width/2, -p->img.hight/2))); printf("\n");
 }
@@ -91,8 +90,12 @@ int	render_next_frame(t_app *p)
 	}
 	put_circle(&p->img, 1, p->mouse_down, BACKGROUND);
 	calc_display_itterations(p);
-	printf("mouse_down put circle"); pi(p->mouse_down); printf("\n");
+	// printf("mouse_down put circle"); pi(p->mouse_down); printf("\n");
 	mlx_put_image_to_window(p->vars.mlx, p->vars.win, p->img.img, 0, 0);
 	return (0);
 }
 
+t_pallet	get_pallet(t_app *a, int i)
+{
+	return (a->pallets.p[i]);
+}

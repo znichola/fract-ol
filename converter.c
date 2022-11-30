@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 23:59:52 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/29 20:22:52 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/30 16:33:57 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,11 @@ t_fpoint fpoint(double x, double y)
 	f.x = x;
 	f.y = y;
 	return (f);
+}
+
+int	toggle(int a)
+{
+	if (a)
+		return (0);
+	return (1);
 }

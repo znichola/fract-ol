@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 08:30:37 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/30 14:50:20 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/30 22:43:18 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,33 @@ void	zoom(t_app *a, int dir)
 	mouse_world_after_zoom = rscreen_to_world(a, a->mouse);
 	a->offset.x += (mouse_world_before_zoom.x - mouse_world_after_zoom.x);
 	a->offset.y += (mouse_world_before_zoom.y - mouse_world_after_zoom.y);
-	printf("scale: "); pf(a->scale); printf("\n");
-	printf("offset: "); pf(a->offset); printf("\n");
+	// printf("scale: "); pf(a->scale); printf("\n");
+	// printf("offset: "); pf(a->offset); printf("\n");
 	a->cf.depth = 1;
+}
+
+void	key_board_nums(t_app *a, int key)
+{
+	if (key == 18)
+		a->pallet_index = 0;
+	else if (key == 19)
+		a->pallet_index = 1;
+	else if (key == 20)
+		a->pallet_index = 2;
+	else if (key == 21)
+		a->pallet_index = 3;
+	else if (key == 23)
+		a->pallet_index = 4;
+	else if (key == 22)
+		a->pallet_index = 5;
+	else if (key == 26)
+		a->pallet_index = 6;
+	else if (key == 28)
+		a->pallet_index = 7;
+	else if (key == 25)
+		a->pallet_index = 8;
+	else if (key == 29)
+		a->pallet_index = 9;
 }
 
 int	key_press(int keycode, t_app *a)
@@ -53,10 +77,7 @@ int	key_press(int keycode, t_app *a)
 	if (keycode == KEY_ESC)
 		destroy(&a->vars);
 	else if (keycode == KEY_UP || keycode == KEY_W)
-	{
 		a->offset.y += 4/a->scale.y;
-		printf("offset: "); pf(a->offset); printf("\n");
-	}
 	else if (keycode == KEY_DOWN || keycode == KEY_S)
 		a->offset.y -= 4/a->scale.y;
 	else if (keycode == KEY_RIGHT || keycode == KEY_D)
@@ -68,12 +89,9 @@ int	key_press(int keycode, t_app *a)
 	else if (keycode == KEY_MINUS)
 		zoom(a, -1);
 	else if (keycode == KEY_SPACE)
-	{
-		if (a->render == 1)
-			a->render = 0;
-		else
-			a->render = 1;
-	}
+		toggle(a->render);
+	else
+		key_board_nums(a, keycode);
 	return (1);
 }
 
@@ -107,11 +125,9 @@ int	mouse_hook(int action, int x, int y, t_app *a)
 	return (0);
 }
 
-int	mouse_action(int x, int y, t_app *a)
+int	mouse_move(int x, int y, t_app *a)
 {
-		printf("\nmousecode: (%d, %d)\n", x, y);
 		a->mouse_down.x = x;
 		a->mouse_down.y = y;
-		printf("mouse_down"); pi(a->mouse_down); printf("\n");
 		return (1);
 }

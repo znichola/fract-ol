@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 23:52:35 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/30 14:37:04 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/30 22:43:48 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ int	generate_madelbrot(t_app *p)
 
 	z.a = 0.0;
 	z.b = 0.0;
-
-	// int	colour = 0XE2DED0;
 	h = p->img.hight;
 	while (h--)
 	{
@@ -80,7 +78,7 @@ int	generate_madelbrot(t_app *p)
 			int	colour = WHITE;
 			if (d != -1)
 				// colour = colour_lerp(1, 100, d);
-				colour = colour_ramp(1, 100, p->cf.depth - d);
+				colour = colour_ramp(1, 100, p->cf.depth - d, p->pallets.p[p->pallet_index]);
 				// colour = colour_shades(colour, d, &p->cf);
 			my_mlx_pixel_put(&p->img, w, h, colour);
 		}
