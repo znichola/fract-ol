@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 00:29:49 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 16:50:20 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 17:14:37 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,10 @@ void	init_app(t_app *p)
 	p->pallet_index = 0;
 	p->start_depth = 1;
 	p->fractal_select = 0;
-	p->mouse_left_toggle = 1;
+	p->mouse_left_toggle = 0;
 }
 	// printf("screen center: "); 
 	// pi(ipoint(p->img.width/2, p->img.hight/2)); printf("\n");
 	// printf("world corrds: "); 
 	// pf(rscreen_to_world(p, ipoint(-p->img.width/2, -p->img.hight/2))); 
 	// printf("\n");
-
-t_pallet	get_pallet(t_app *a, int i)
-{
-	return (a->pallets.p[i]);
-}

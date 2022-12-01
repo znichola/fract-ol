@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 00:40:16 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 15:19:42 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 17:17:29 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ static void	fractal_select(t_app *a, int key)
 
 int	key_press(int keycode, t_app *a)
 {
+	printf("\nkeycode:[%d]\n", keycode);
+
 	if (keycode == KEY_ESC)
 		destroy(&a->vars);
 	else if (keycode == KEY_UP || keycode == KEY_W)
@@ -66,6 +68,8 @@ int	key_press(int keycode, t_app *a)
 		zoom(a, -1);
 	else if (keycode == KEY_SPACE)
 		a->render = toggle(a->render);
+	else if (keycode == KEY_R)
+		set_scale_offset(a);
 	else
 	{
 		key_board_nums(a, keycode);

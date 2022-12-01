@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 18:30:39 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 15:04:06 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 17:16:20 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ t_fpoint	rscreen_to_world(t_app *a, t_ipoint s);
 
 /* init */
 void		init_app(t_app *p);
-t_pallet	get_pallet(t_app *a, int i);
+void		set_scale_offset(t_app *p);
 
 /* display */
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);

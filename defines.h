@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:19:36 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 16:19:27 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 17:17:26 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ enum e_key {
 	KEY_M = 46,
 	KEY_B = 11,
 	KEY_N = 45,
+	KEY_R = 15,
 };
 
 #endif /* defines */
