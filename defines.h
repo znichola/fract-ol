@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:19:36 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 17:17:26 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 18:15:56 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define WIDTH 500
 # define HIGHT 500
 # define MAXDEPTH 120
-# define MAXPOINTS 50
+# define MAXPOINTS 100
 
 # define GREY 0XE2DED0
 # define IVORY 0X4E4F50

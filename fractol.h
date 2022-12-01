@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 18:30:39 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 17:16:20 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 18:41:00 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,8 +139,14 @@ void		set_scale_offset(t_app *p);
 /* display */
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int			render_next_frame(t_app *p);
-
 void		put_circle_fast(t_data *d, int r, t_ipoint center, int colour);
+
+/* display itterators */
+int			mandelbrot_itterations(t_app *p);
+int			julia_itterations(t_app *p);
+int			burningship_itterations(t_app *p);
+int			burningjulia_itterations(t_app *p);
+int			display_itterations(t_app *p);
 
 /* events */
 int			destroy(t_vars *vars);
@@ -155,7 +161,6 @@ int			key_press(int keycode, t_app *a);
 int			mandelbrot_like(t_complex z, t_complex c, int depth);
 int			generate_fractal(t_app *p);
 int			fractal_selector(t_app *a, t_ipoint pix, int fractal, int depth);
-
 
 /* converter */
 t_complex	ftc(t_fpoint f);
