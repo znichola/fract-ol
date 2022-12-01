@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:44:16 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 01:57:40 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 11:15:40 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_pallet	clpt_green_to_red(void)
 {
 	t_pallet	p;
-	
+
 	p.len = 7;
 	p.c[0] = 0xEFF5F5;
 	p.c[1] = 0xD6E4E5;
@@ -30,7 +30,7 @@ t_pallet	clpt_green_to_red(void)
 t_pallet	clpt_pastel_shades(void)
 {
 	t_pallet	p;
-	
+
 	p.len = 11;
 	p.c[0] = 0xfbf8cc;
 	p.c[1] = 0xfde4cf;
@@ -49,7 +49,7 @@ t_pallet	clpt_pastel_shades(void)
 t_pallet	clpt_retroearth(void)
 {
 	t_pallet	p;
-	
+
 	p.len = 12;
 	p.c[0] = 0x797d62;
 	p.c[1] = 0x9b9b7a;
@@ -69,7 +69,7 @@ t_pallet	clpt_retroearth(void)
 t_pallet	clpt_fading(void)
 {
 	t_pallet	p;
-	
+
 	p.len = 16;
 	p.c[0] = 0xddcf99;
 	p.c[1] = 0xcca87b;
@@ -93,7 +93,7 @@ t_pallet	clpt_fading(void)
 t_pallet	clpt_cyberneon(void)
 {
 	t_pallet	p;
-	
+
 	p.len = 16;
 	p.c[0] = 0x10133c;
 	p.c[1] = 0x005260;

@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 00:29:49 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 01:16:32 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 02:39:30 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	init_app(t_app *p)
 			ipoint(p->img.width / -2, p->img.hight / -2));
 	init_pallets(&p->pallets);
 	p->pallet_index = 0;
+	p->start_depth = 1;
 }
 	// printf("screen center: "); 
 	// pi(ipoint(p->img.width/2, p->img.hight/2)); printf("\n");

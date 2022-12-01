@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 08:25:27 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 01:41:38 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 11:07:04 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,5 @@ int	render_next_frame(t_app *p)
 	mlx_put_image_to_window(p->vars.mlx, p->vars.win, p->img.img, 0, 0);
 	return (0);
 }
+		// if (p->cf.depth < p->start_depth + 20)
 	// printf("mouse_down put circle"); pi(p->mouse_down); printf("\n");

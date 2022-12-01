@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:03:40 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 01:17:18 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 11:16:12 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_pallet	clpt_greyscale(void)
 {
 	t_pallet	p;
-	
+
 	p.len = 2;
 	p.c[0] = 0xf2f2f2;
 	p.c[1] = 0x595959;
@@ -25,7 +25,7 @@ t_pallet	clpt_greyscale(void)
 t_pallet	clpt_pollen(void)
 {
 	t_pallet	p;
-	
+
 	p.len = 9;
 	p.c[0] = 0x0073464c;
 	p.c[1] = 0x0073464c;
@@ -42,7 +42,7 @@ t_pallet	clpt_pollen(void)
 t_pallet	clpt_full_rainbow(void)
 {
 	t_pallet	p;
-	
+
 	p.len = 11;
 	p.c[0] = 0x6d84a1;
 	p.c[1] = 0x7e789c;
@@ -61,7 +61,7 @@ t_pallet	clpt_full_rainbow(void)
 t_pallet	clpt_twilight(void)
 {
 	t_pallet	p;
-	
+
 	p.len = 5;
 	p.c[0] = 0x00292831;
 	p.c[1] = 0x00333f58;
@@ -74,7 +74,7 @@ t_pallet	clpt_twilight(void)
 t_pallet	clpt_blue_to_pink(void)
 {
 	t_pallet	p;
-	
+
 	p.len = 7;
 	p.c[0] = 0x2E4C6D;
 	p.c[1] = 0x396EB0;

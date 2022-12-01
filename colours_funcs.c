@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 08:19:33 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 01:17:00 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 11:15:18 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,21 @@
 // https://www.youtube.com/watch?v=IDFB5CDpLDE
 int	colour_lerp(int min, int max, int point)
 {
-	int	str_col;
-	int	end_col;
+	int		str_col;
+	int		end_col;
+	double	prct;
 
 	str_col = 0x00ff1b6b;
 	end_col = 0x0045caff;
-	
-	double	prct;
 	prct = (double)(point - min) / (max - min);
-	
-	return(create_trgb(0,
-						get_r(str_col) * (1 - prct) + get_r(end_col) *prct,
-						get_g(str_col) * (1 - prct) + get_g(end_col) * prct,
-						get_b(str_col) * (1 - prct) + get_b(end_col) * prct
-						));
+	return (create_trgb(0,
+			get_r(str_col) * (1 - prct) + get_r(end_col) * prct,
+			get_g(str_col) * (1 - prct) + get_g(end_col) * prct,
+			get_b(str_col) * (1 - prct) + get_b(end_col) * prct
+		));
 }
 
-// 0.0    |---:---^---:---^---:-->| 1.0 	^ = 4 - 2	chunk_offset -> colour_switch_boundry
+// 0.0    |---:---^---:---^---:-->| 1.0 	^ = 4 - 2	colour_switch_boundry
 //     [  :  ] [  :  ] [  :  ] [  :  ]		: = 4 - 1	chunk
 
 int	colour_ramp(int min, int max, int point, t_pallet p)
@@ -62,11 +60,11 @@ int	colour_ramp(int min, int max, int point, t_pallet p)
 	chunk = 1 / (double)(p.len - 1);
 	col_i = (int)(prct / (double)chunk);
 	col_p = (prct - (col_i * chunk)) / chunk;
-	return(create_trgb(0,
-					get_r(p.c[col_i]) * (1 - col_p) + get_r(p.c[col_i + 1]) * (col_p),
-					get_g(p.c[col_i]) * (1 - col_p) + get_g(p.c[col_i + 1]) * (col_p),
-					get_b(p.c[col_i]) * (1 - col_p) + get_b(p.c[col_i + 1]) * (col_p)
-					));
+	return (create_trgb(0,
+			get_r(p.c[col_i]) * (1 - col_p) + get_r(p.c[col_i + 1]) * (col_p),
+			get_g(p.c[col_i]) * (1 - col_p) + get_g(p.c[col_i + 1]) * (col_p),
+			get_b(p.c[col_i]) * (1 - col_p) + get_b(p.c[col_i + 1]) * (col_p)
+		));
 }
 
 int	colour_shades(int colour, int depth, t_cmpx_fld *cf)

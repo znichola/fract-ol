@@ -6,11 +6,27 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 23:52:35 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 01:38:57 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 11:29:55 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+int	fractal_set(t_complex z, t_complex c, int depth)
+{
+	t_complex	ans;
+	double		len;
+	int			ret;
+
+	ans = c_addition(c_power2(z), c);
+	len = c_length(ans);
+	ret = -1;
+	if (len > 2)
+		return (depth);
+	else if (depth > 0)
+		ret = fractal_set(ans, c, depth - 1);
+	return (ret);
+}
 
 int	generate_madelbrot(t_app *p)
 {

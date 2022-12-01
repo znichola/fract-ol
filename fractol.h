@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 18:30:39 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 01:16:34 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 11:16:57 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,14 +114,14 @@ typedef struct s_app
 	int			render;
 	t_pallets	pallets;
 	int			pallet_index;
+	int			start_depth;
 }				t_app;
 
 /* comlplex.c */
-int			fractal_set(t_complex z, t_complex c, int depth);
-void		print_complex(char *s, t_complex c);
 t_complex	c_addition(t_complex c1, t_complex c2);
 t_complex	c_multiplication(t_complex c1, t_complex c2);
 t_complex	c_power2(t_complex c1);
+double		c_length(t_complex c);
 
 /* map */
 t_ipoint	rworld_to_screen(t_app *a, t_fpoint w);
@@ -147,6 +147,7 @@ void		zoom(t_app *a, int dir);
 int			key_press(int keycode, t_app *a);
 
 /* fractal */
+int			fractal_set(t_complex z, t_complex c, int depth);
 int			generate_madelbrot(t_app *p);
 
 /* converter */
@@ -156,9 +157,10 @@ t_fpoint	fpoint(double x, double y);
 t_ipoint	ipoint(int x, int y);
 int			toggle(int a);
 
-/* debug */
-void		pi(t_ipoint p);		// uses printf
-void		pf(t_fpoint p);		// uses printf
+/* debug */ // they use printf need to remove after
+void		pi(t_ipoint p);
+void		pf(t_fpoint p);
+void		print_complex(char *s, t_complex c);
 
 // ----- COLOUR ----- //
 
