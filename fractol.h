@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 18:30:39 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 11:16:57 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 15:04:06 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,9 @@ typedef struct s_app
 	t_cmpx_fld	cf;
 	t_ipoint	mouse;
 	t_ipoint	mouse_down;
+	t_fpoint	world_mouse_right;
+	int			mouse_right_toggle;
+	int			mouse_left_toggle;
 	t_fpoint	offset;
 	t_fpoint	scale;
 	t_ipoint	points[MAXPOINTS];
@@ -115,6 +118,7 @@ typedef struct s_app
 	t_pallets	pallets;
 	int			pallet_index;
 	int			start_depth;
+	int			fractal_select;
 }				t_app;
 
 /* comlplex.c */
@@ -122,6 +126,7 @@ t_complex	c_addition(t_complex c1, t_complex c2);
 t_complex	c_multiplication(t_complex c1, t_complex c2);
 t_complex	c_power2(t_complex c1);
 double		c_length(t_complex c);
+t_complex	c_abs(t_complex c1);
 
 /* map */
 t_ipoint	rworld_to_screen(t_app *a, t_fpoint w);
@@ -147,8 +152,10 @@ void		zoom(t_app *a, int dir);
 int			key_press(int keycode, t_app *a);
 
 /* fractal */
-int			fractal_set(t_complex z, t_complex c, int depth);
-int			generate_madelbrot(t_app *p);
+int			mandelbrot_like(t_complex z, t_complex c, int depth);
+int			generate_fractal(t_app *p);
+int			fractal_selector(t_app *a, t_ipoint pix, int fractal, int depth);
+
 
 /* converter */
 t_complex	ftc(t_fpoint f);

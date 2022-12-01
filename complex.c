@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 09:46:01 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 11:17:02 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 15:12:27 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,3 +50,36 @@ double	c_length(t_complex c)
 	ans = sqrt(c.a * c.a + c.b * c.b);
 	return (ans);
 }
+
+t_complex	c_abs(t_complex c1)
+{
+	t_complex	c;
+	
+	c.a = fabs(c1.a);
+	c.b = fabs(c1.b);
+	return (c);
+}
+
+// for later, this is some heavy math
+// https://android.googlesource.com/
+// platform/bionic/+/refs/heads/master/
+// libm/upstream-freebsd/lib/msun/src/s_cpow.c
+// double	c_absa(t_complex c)
+// {
+// 	return (fabs(c_length(c)));
+// }
+
+// t_complex	c_pow_n(t_complex c1, int pow)
+// {
+// 	double		r;
+// 	double		theta;
+// 	double		absa;
+// 	double		arga;
+// 	t_complex	c;
+
+// 	absa = c_absa(c1);
+// 	if (absa = 0.0)
+// 		return (ftc(fpoint(0.0, 0.0)));
+// 	arga = 
+// 	r = c_length(c1);
+// }

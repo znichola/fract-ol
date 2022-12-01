@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:19:36 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/30 23:29:35 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 13:20:44 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@
 # define WHITE 0XFFFFFF
 
 # define PI 3.1415926535
+
+# define MANDELBROT 0
+# define JULIA 1
+# define BURNINGSHIP 2
+# define NONAME 3
 
 enum e_events
 {
@@ -61,6 +66,10 @@ enum e_key {
 	KEY_PLUS = 69,
 	KEY_MINUS = 78,
 	KEY_SPACE = 49,
+	KEY_J = 38,
+	KEY_M = 46,
+	KEY_B = 11,
+	KEY_N = 45,
 };
 
 #endif /* defines */

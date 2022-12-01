@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 08:30:37 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 11:29:48 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 14:16:00 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	zoom(t_app *a, int dir)
 	mouse_world_after_zoom = rscreen_to_world(a, a->mouse);
 	a->offset.x += (mouse_world_before_zoom.x - mouse_world_after_zoom.x);
 	a->offset.y += (mouse_world_before_zoom.y - mouse_world_after_zoom.y);
-	a->cf.depth = a->scale.x * 0.001;
+	// a->cf.depth = a->scale.x * 0.001;
+	// a->cf.depth = a->scale.x * 0.001;
 }
 	// a->start_depth = a->scale.x;
 	// printf("scale: "); pf(a->scale); printf("\n");
@@ -52,15 +53,14 @@ int	mouse_hook(int action, int x, int y, t_app *a)
 	a->mouse.x = x;
 	a->mouse.y = y;
 	if (action == MOUSE_LEFT)
-	{
-		printf("left click\n");
-	}
+		a->mouse_left_toggle = toggle(a->mouse_left_toggle);
 	else if (action == MOUSE_RIGHT)
-	{
-		printf("right click\n");
-	}
+		a->world_mouse_right = rscreen_to_world(a, a->mouse);
 	else if (action == MOUSE_MIDDLE)
-		printf("middle click\n");
+	{	
+		a->cf.depth = 1;
+		a->render = 1;
+	}
 	else if (action == MOUSE_SCROLL_UP)
 		zoom(a, -1);
 	else if (action == MOUSE_SCROLL_DOWN)
