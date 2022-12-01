@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 23:52:35 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 15:00:15 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 15:20:13 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ int	generate_fractal(t_app *p)
 		w = p->img.width;
 		while (w--)
 		{
-			d = fractal_selector(p, ipoint(w, h), p->fractal_select, p->cf.depth);
+			d = fractal_selector(p,
+					ipoint(w, h), p->fractal_select, p->cf.depth);
 			colour = WHITE;
 			if (d != -1)
 				colour = colour_ramp(1, 100, p->cf.depth - d,

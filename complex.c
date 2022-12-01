@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 09:46:01 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 15:12:27 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 15:17:54 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ double	c_length(t_complex c)
 t_complex	c_abs(t_complex c1)
 {
 	t_complex	c;
-	
+
 	c.a = fabs(c1.a);
 	c.b = fabs(c1.b);
 	return (c);

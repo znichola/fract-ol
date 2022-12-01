@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 00:40:16 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 13:22:41 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 15:19:42 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static void	fractal_select(t_app *a, int key)
 
 int	key_press(int keycode, t_app *a)
 {
-	printf("\nkeycode:[%d]\n", keycode);
 	if (keycode == KEY_ESC)
 		destroy(&a->vars);
 	else if (keycode == KEY_UP || keycode == KEY_W)
@@ -71,7 +70,8 @@ int	key_press(int keycode, t_app *a)
 	{
 		key_board_nums(a, keycode);
 		fractal_select(a, keycode);
-		printf("fractal selected is:%d\n", a->fractal_select);
 	}
 	return (0);
 }
+	// printf("\nkeycode:[%d]\n", keycode);
+		// printf("fractal selected is:%d\n", a->fractal_select);

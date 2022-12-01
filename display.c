@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 08:25:27 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 14:18:07 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 15:18:57 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,10 @@ int	render_next_frame(t_app *p)
 	{
 		p->cf.depth += 1;
 	}
-		generate_fractal(p);
+	generate_fractal(p);
 	if (p->fractal_select == JULIA)
-		put_circle_fast(&p->img, 3, rworld_to_screen(p, p->world_mouse_right), BACKGROUND);
+		put_circle_fast(&p->img, 3,
+			rworld_to_screen(p, p->world_mouse_right), BACKGROUND);
 	if (p->mouse_left_toggle)
 		display_itterations(p);
 	mlx_put_image_to_window(p->vars.mlx, p->vars.win, p->img.img, 0, 0);

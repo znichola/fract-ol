@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 08:30:37 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 14:16:00 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 15:19:14 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,13 @@ void	zoom(t_app *a, int dir)
 	mouse_world_after_zoom = rscreen_to_world(a, a->mouse);
 	a->offset.x += (mouse_world_before_zoom.x - mouse_world_after_zoom.x);
 	a->offset.y += (mouse_world_before_zoom.y - mouse_world_after_zoom.y);
-	// a->cf.depth = a->scale.x * 0.001;
-	// a->cf.depth = a->scale.x * 0.001;
 }
+	// a->cf.depth = a->scale.x * 0.001;
+	// a->cf.depth = a->scale.x * 0.001;
 	// a->start_depth = a->scale.x;
 	// printf("scale: "); pf(a->scale); printf("\n");
 	// printf("offset: "); pf(a->offset); printf("\n");
 
-// TODO: remove printf
 int	mouse_hook(int action, int x, int y, t_app *a)
 {
 	a->mouse.x = x;
