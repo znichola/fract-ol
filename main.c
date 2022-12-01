@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 17:57:33 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 20:36:25 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 21:02:21 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	main(int ac, char **av)
 {
 	t_app	app;
 	int		fractal;
-	
+
 	if (ac != 2 || inputparce(&fractal, av[1]))
 		return (valid_input_message());
 	init_app(&app);
