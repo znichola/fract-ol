@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 08:25:27 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 00:19:03 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 01:41:38 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,11 @@
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
+
 	if (x < 0 || y < 0 || x > WIDTH || y > HIGHT)
 		return ;
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
-
-int	put_circle(t_data *d, int r, t_ipoint center, int colour)
-{
-	double		angle;
-	t_fpoint	q;
-
-	angle = 0.0;
-	while(angle < 360)
-	{
-		q.x = r * cos(angle * PI / 180);
-		q.y = r * sin(angle * PI / 180);
-		my_mlx_pixel_put(d, q.x + center.x, q.y + center.y, colour);
-		angle += 0.1;
-	}
-	return (1);
+	*(unsigned int *)dst = color;
 }
 
 // fast aproximative algo from stackoverflow
@@ -45,7 +30,7 @@ void	put_circle_fast(t_data *d, int r, t_ipoint center, int colour)
 	int	x;
 
 	y = -r;
-	while(y <= r)
+	while (y <= r)
 	{
 		x = -r;
 		while (x <= r)
@@ -58,31 +43,11 @@ void	put_circle_fast(t_data *d, int r, t_ipoint center, int colour)
 	}
 }
 
-void	init_app(t_app *p)
+int	display_itterations(t_app *p)
 {
-	p->vars.mlx = mlx_init();
-	p->img.width = WIDTH;
-	p->img.hight = HIGHT;
-	p->vars.win = mlx_new_window(p->vars.mlx, p->img.width, p->img.hight, "Hello Fractal!");
-	p->img.img = mlx_new_image(p->vars.mlx, p->img.width, p->img.hight);
-	p->img.addr = mlx_get_data_addr(p->img.img,
-									&p->img.bits_per_pixel,
-									&p->img.line_length,
-									&p->img.endian);
-	p->scale = fpoint(p->img.width * 0.2, p->img.hight * 0.2);
-	p->offset = fpoint(0, 0);
-	p->offset = rscreen_to_world(p, ipoint(-p->img.width/2, -p->img.hight/2));
-	init_pallets(&p->pallets);
-	p->pallet_index = 0;
-	// printf("screen center: "); pi(ipoint(p->img.width/2, p->img.hight/2)); printf("\n");
-	// printf("world corrds: "); pf(rscreen_to_world(p, ipoint(-p->img.width/2, -p->img.hight/2))); printf("\n");
-}
-
-int	calc_display_itterations(t_app *p)
-{
-	t_complex z;
-	t_complex c;
-	int	i;
+	t_complex	z;
+	t_complex	c;
+	int			i;
 
 	i = 1;
 	p->points[0] = rworld_to_screen(p, fpoint(0.0, 0.0));
@@ -101,16 +66,11 @@ int	render_next_frame(t_app *p)
 {
 	if (p->render)
 	{
-		p->cf.depth +=1;
+		p->cf.depth += 1;
 		generate_madelbrot(p);
 	}
-	calc_display_itterations(p);
-	// printf("mouse_down put circle"); pi(p->mouse_down); printf("\n");
+	display_itterations(p);
 	mlx_put_image_to_window(p->vars.mlx, p->vars.win, p->img.img, 0, 0);
 	return (0);
 }
-
-t_pallet	get_pallet(t_app *a, int i)
-{
-	return (a->pallets.p[i]);
-}
+	// printf("mouse_down put circle"); pi(p->mouse_down); printf("\n");

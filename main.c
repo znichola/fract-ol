@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 17:57:33 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/30 22:45:51 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 01:16:30 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	main(void)
 {
-	t_app app;
-	
+	t_app	app;
+
 	init_app(&app);
 	mlx_hook(app.vars.win, ON_MOUSEMOVE, 0, mouse_move, &app);
 	mlx_key_hook(app.vars.win, key_press, &app);

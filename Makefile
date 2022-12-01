@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: znichola <znichola@student.42.fr>          +#+  +:+       +#+         #
+#    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 18:49:24 by znichola          #+#    #+#              #
-#    Updated: 2022/12/01 00:22:55 by znichola         ###   ########.fr        #
+#    Updated: 2022/12/01 01:16:28 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SNAME 	=	main complex map display events fractal \
-			colours colours_init_1 colours_init_2 colours_funcs \
-			converter
+SNAME 	=	main complex map display events events_2 fractal \
+			colours colours_def_1 colours_def_2 colours_funcs \
+			converter init
 SRC		= $(addsuffix .c, $(SNAME))
 OBJ 	= $(SRC:%.c=%.o)
 

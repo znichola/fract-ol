@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 08:30:37 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 00:28:49 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 01:39:19 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 int	destroy(t_vars *vars)
 {
-	// printf("lsdjkf %p\n", vars);
 	mlx_destroy_window(vars->mlx, vars->win);
-	// printf("lsdjkf %p\n", vars);
 	exit(0);
 	return (0);
 }
@@ -42,58 +40,10 @@ void	zoom(t_app *a, int dir)
 	mouse_world_after_zoom = rscreen_to_world(a, a->mouse);
 	a->offset.x += (mouse_world_before_zoom.x - mouse_world_after_zoom.x);
 	a->offset.y += (mouse_world_before_zoom.y - mouse_world_after_zoom.y);
-	// printf("scale: "); pf(a->scale); printf("\n");
-	// printf("offset: "); pf(a->offset); printf("\n");
 	a->cf.depth = 1;
 }
-
-void	key_board_nums(t_app *a, int key)
-{
-	if (key == 18)
-		a->pallet_index = 0;
-	else if (key == 19)
-		a->pallet_index = 1;
-	else if (key == 20)
-		a->pallet_index = 2;
-	else if (key == 21)
-		a->pallet_index = 3;
-	else if (key == 23)
-		a->pallet_index = 4;
-	else if (key == 22)
-		a->pallet_index = 5;
-	else if (key == 26)
-		a->pallet_index = 6;
-	else if (key == 28)
-		a->pallet_index = 7;
-	else if (key == 25)
-		a->pallet_index = 8;
-	else if (key == 29)
-		a->pallet_index = 9;
-}
-
-int	key_press(int keycode, t_app *a)
-{
-	printf("\nkeycode:[%d]\n", keycode);
-	if (keycode == KEY_ESC)
-		destroy(&a->vars);
-	else if (keycode == KEY_UP || keycode == KEY_W)
-		a->offset.y += 10/a->scale.y;
-	else if (keycode == KEY_DOWN || keycode == KEY_S)
-		a->offset.y -= 10/a->scale.y;
-	else if (keycode == KEY_RIGHT || keycode == KEY_D)
-		a->offset.x -= 2/a->scale.x;
-	else if (keycode == KEY_LEFT || keycode == KEY_A)
-		a->offset.x += 2/a->scale.x;
-	else if (keycode == KEY_PLUS)
-		zoom(a, 1);
-	else if (keycode == KEY_MINUS)
-		zoom(a, -1);
-	else if (keycode == KEY_SPACE)
-		a->render = toggle(a->render);
-	else
-		key_board_nums(a, keycode);
-	return (0);
-}
+	// printf("scale: "); pf(a->scale); printf("\n");
+	// printf("offset: "); pf(a->offset); printf("\n");
 
 int	mouse_hook(int action, int x, int y, t_app *a)
 {
