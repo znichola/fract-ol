@@ -1,6 +1,6 @@
 *.o
 *.out
-mlx*
+# mlx*
 .vscode
 .DS_Store
 fractol

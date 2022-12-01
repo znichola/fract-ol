@@ -6,7 +6,7 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 18:49:24 by znichola          #+#    #+#              #
-#    Updated: 2022/12/01 19:07:45 by znichola         ###   ########.fr        #
+#    Updated: 2022/12/01 20:52:44 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ NAME	= fractol
 %.o: %.c
 	$(CC) -Wall -Wextra -Werror  -Imlx -c $< -o $@
 
-all : $(NAME)
+all : mlx/libmlx.a $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME) -lm 
@@ -33,8 +33,12 @@ clean :
 
 fclean : clean
 	$(RM) fractol
+	$(MAKE) -C mlx/ clean
 
 re: clean all
+
+mlx/libmlx.a :
+	$(MAKE) -C mlx/ libmlx.a
 
 .PHONY: all bonus clean re
 
