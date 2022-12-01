@@ -6,16 +6,16 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:19:36 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 13:20:44 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 16:19:27 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINES_H
 # define DEFINES_H
 
-# define WIDTH 1000
-# define HIGHT 1000
-# define DEPTH 60
+# define WIDTH 500
+# define HIGHT 500
+# define MAXDEPTH 120
 # define MAXPOINTS 50
 
 # define GREY 0XE2DED0

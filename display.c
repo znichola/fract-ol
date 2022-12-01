@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 08:25:27 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 15:18:57 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 16:06:17 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	display_itterations(t_app *p)
 
 int	render_next_frame(t_app *p)
 {
-	if (p->render)
+	if (p->render && p->cf.depth < MAXDEPTH)
 	{
 		p->cf.depth += 1;
 	}

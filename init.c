@@ -6,11 +6,20 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 00:29:49 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 13:45:48 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/01 16:50:20 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void	set_scale_offset(t_app *p)
+{
+	p->scale = fpoint(p->img.width * 0.2 * ((double)HIGHT / WIDTH),
+			p->img.hight * 0.2);
+	p->offset = fpoint(0, 0);
+	p->offset = rscreen_to_world(p,
+			ipoint(p->img.width / -2, p->img.hight / -2));
+}
 
 void	init_app(t_app *p)
 {
@@ -24,15 +33,12 @@ void	init_app(t_app *p)
 			&p->img.bits_per_pixel,
 			&p->img.line_length,
 			&p->img.endian);
-	p->scale = fpoint(p->img.width * 0.2, p->img.hight * 0.2);
-	p->offset = fpoint(0, 0);
-	p->offset = rscreen_to_world(p,
-			ipoint(p->img.width / -2, p->img.hight / -2));
+	set_scale_offset(p);
 	init_pallets(&p->pallets);
 	p->pallet_index = 0;
 	p->start_depth = 1;
 	p->fractal_select = 0;
-	p->mouse_left_toggle = 0;
+	p->mouse_left_toggle = 1;
 }
 	// printf("screen center: "); 
 	// pi(ipoint(p->img.width/2, p->img.hight/2)); printf("\n");
