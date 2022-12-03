@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 18:30:39 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 18:41:00 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/02 23:26:49 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@
 # include "mlx.h"
 # include "defines.h"
 # include "colours.h"
+
+# if defined(__APPLE__)
+#  include <key_macos.h>
+# else
+// #  include <key_linux.h>
+# endif
 
 typedef struct s_ipoint
 {

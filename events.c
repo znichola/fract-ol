@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 08:30:37 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 18:24:28 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/03 21:02:54 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	zoom(t_app *a, int dir)
 
 int	mouse_hook(int action, int x, int y, t_app *a)
 {
+	printf("mouse press [%d]\n", action);
 	a->mouse.x = x;
 	a->mouse.y = y;
 	if (action == MOUSE_LEFT)

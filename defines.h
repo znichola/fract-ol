@@ -6,15 +6,15 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:19:36 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/01 18:15:56 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/03 21:15:09 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINES_H
 # define DEFINES_H
 
-# define WIDTH 500
-# define HIGHT 500
+# define WIDTH 800
+# define HIGHT 800
 # define MAXDEPTH 120
 # define MAXPOINTS 100
 
@@ -46,14 +46,14 @@ enum e_events
 enum e_mouse_key
 {
 	MOUSE_LEFT = 1,
-	MOUSE_RIGHT = 2,
-	MOUSE_MIDDLE = 3,
+	MOUSE_RIGHT = 3,
+	MOUSE_MIDDLE = 2,
 	MOUSE_SCROLL_UP = 4,
 	MOUSE_SCROLL_DOWN = 5,
 };
 
 enum e_key {
-	KEY_ESC = 53,
+	KEY_ESC = 65307,
 	KEY_W = 13,
 	KEY_A = 0,
 	KEY_S = 1,
@@ -65,12 +65,22 @@ enum e_key {
 	KEY_RIGHT = 124,
 	KEY_PLUS = 69,
 	KEY_MINUS = 78,
-	KEY_SPACE = 49,
-	KEY_J = 38,
-	KEY_M = 46,
-	KEY_B = 11,
-	KEY_N = 45,
+	KEY_SPACE = 32,
+	KEY_J = 106,
+	KEY_M = 109,
+	KEY_B = 110,
+	KEY_N = 98,
 	KEY_R = 15,
+	KEY_1 = 49,
+	KEY_2 = 50,
+	KEY_3 = 51,
+	KEY_4 = 52,
+	KEY_5 = 53,
+	KEY_6 = 54,
+	KEY_7 = 55,
+	KEY_8 = 56,
+	KEY_9 = 57,
+	KEY_0 = 48,
 };
 
 #endif /* defines */
